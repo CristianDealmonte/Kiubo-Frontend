@@ -23,17 +23,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AuthLayout/>}> {/* Layout principal */} 
-          <Route index element={<Login/>}></Route> {/* Componente default */}
-          <Route path='registrar' element={<Registrar/>}></Route>
-          <Route path='confirmar/:token' element={<ConfirmarCuenta/>}></Route>
-          <Route path='reset-password' element={<ResetPassword/>}></Route>
+          <Route index element={<Login/>}/> {/* Componente default */}
+          <Route path='registrar' element={<Registrar/>}/>
+          <Route path='confirmar/:token' element={<ConfirmarCuenta/>}/>
+          <Route path='reset-password' element={<ResetPassword/>}/>
         </Route>
 
       </Routes>
     </BrowserRouter>
       
-      <h1>Hola Mundo</h1>
-
 
 
     </>
