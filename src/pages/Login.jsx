@@ -70,15 +70,15 @@ const Login = () => {
                 <h1 className="text-white text-center text-3xl lg:text-5xl font-black">Inicia Sesión y Chatea con tus <span className="text-color4">Amigos!</span></h1>
             </div>
             <div className="bg-white px-4 py-5 md:py-16 md:rounded-e-lg">
+                
+                {/* Muestra alerta solo si existe algun mensaje de error */}
+                { msg && 
+                    <Alerta                      
+                        alerta={ alerta }
+                    />
+                }                
+                
                 <form onSubmit={handleSubmit}>
-
-                    {/* Muestra alerta solo si existe algun mensaje de error */}
-                    { msg && 
-                        <Alerta                      
-                            alerta={ alerta }
-                        />
-                    }
-
                     <div className="p-2">
                         <label className="uppercase text-gray-600 block text-base font-bold">Correo</label>
                         <input 

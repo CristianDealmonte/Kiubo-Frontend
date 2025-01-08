@@ -83,15 +83,15 @@ const Registrar = () => {
 
             </div>
             <div className="bg-white px-4 py-5 md:py-16 md:rounded-e-lg">
+                
+                {/* Muestra alerta solo si existe algun mensaje de error */}
+                { msg && 
+                    <Alerta                      
+                        alerta={ alerta }
+                    />
+                }                
+
                 <form onSubmit={ handleSubmit }>
-
-                    {/* Muestra alerta solo si existe algun mensaje de error */}
-                    { msg && 
-                        <Alerta                      
-                            alerta={ alerta }
-                        />
-                    }
-
                     <div className="p-2">
                         <label className="uppercase text-gray-600 block text-base font-bold">Nombre de Usuario</label>
                         <input 
@@ -110,7 +110,7 @@ const Registrar = () => {
                             placeholder="Tu Correo"
                             className="border w-full py-2 px-5 mt-3 bg-gray-50 rounded-lg"
                             value={ email }
-                            onChange={ e => setEmail(e.target.value)}
+                            onChange={ e => setEmail(e.target.value.toLowerCase())}
                         />
                     </div>
 
@@ -140,7 +140,7 @@ const Registrar = () => {
                         <input 
                             type="submit"
                             value="Crear Cuenta"
-                            className="bg-color3 hover:bg-color4 text-white mt-5 w-full py-3 px-10 rounded-lg uppercase font-bold hover:cursor-pointer md:w-auto" 
+                            className="bg-color3 hover:bg-color4 text-white mt-5 py-3 px-10 rounded-lg uppercase font-bold hover:cursor-pointer md:w-auto" 
                         />                          
                     </div>
                 </form>
