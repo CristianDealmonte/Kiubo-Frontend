@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 // Importacion de custom modules
-import Alerta from '../componentes/Alerta';
-import clienteAxios from "../config/axios";
+import Alerta from '../../componentes/Alerta';
+import clienteAxios from "../../config/axios";
 
 const ResetPassword = () => {
 
@@ -98,7 +98,7 @@ const ResetPassword = () => {
                 <nav className='mt-10 md:mt-5 md:-mb-10 lg:flex lg:justify-between'>
                     <Link className='block text-gray-500 text-center my-5 md:my-3 ' to="/">¿Ya tienes una cuenta? <span className='text-indigo-700 font-bold'>Inicia Sesión</span></Link>
 
-                    <Link className='block text-gray-500 text-center my-5 md:my-3 ' to="/registrar">¿No tienes una cuenta? <span className='text-indigo-700 font-bold'>Registrate</span></Link>
+                    <Link className='block text-gray-500 text-center my-5 md:my-3 ' to="/register">¿No tienes una cuenta? <span className='text-indigo-700 font-bold'>Registrate</span></Link>
                 </nav>               
             </div>
         </>

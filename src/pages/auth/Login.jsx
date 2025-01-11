@@ -1,12 +1,11 @@
 // Importacion de dependencias
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { use } from "react";
 
 
 // Importacion de custom modules
-import Alerta from '../componentes/Alerta';
-import clienteAxios from "../config/axios";
+import Alerta from '../../componentes/Alerta';
+import clienteAxios from "../../config/axios";
 
 
 
@@ -18,6 +17,9 @@ const Login = () => {
 
     // Declaracion del estado de la alerta
     const [alerta, setAlerta] = useState({});
+
+    // instancia de redireccion
+    const navigate = useNavigate();
 
 
     // Acción al enviar el formulario
@@ -39,17 +41,17 @@ const Login = () => {
             const { data } = await clienteAxios.post('/users/login', {email, password});
 
             // Almacena en localStorage el JWT que nos retorna
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('authToken', data.token);
 
             // Redirige al usuario
-            console.log('redirigiendo a admin');
+            navigate('/user')
 
         } catch (error) {
             // Crea alerta de error
             setAlerta({
                 msg: error.response.data.msg,
                 error: true
-            })
+            });
         }
     }
 
@@ -88,7 +90,7 @@ const Login = () => {
                             // tomar los valores del formulario
                             value={email}
                             onChange={ e => {
-                                setEmail(e.target.value); 
+                                setEmail(e.target.value.toLowerCase()); 
                             }}
                         />
                     </div>
@@ -117,7 +119,7 @@ const Login = () => {
                 </form>
 
                 <nav className='mt-10 md:mt-5 md:-mb-10 lg:flex lg:justify-between'>
-                    <Link className='block text-gray-500 text-center my-5 md:my-3 ' to="/registrar">¿No tienes una cuenta? <span className='text-indigo-700 font-bold'>Registrate</span></Link>
+                    <Link className='block text-gray-500 text-center my-5 md:my-3 ' to="/register">¿No tienes una cuenta? <span className='text-indigo-700 font-bold'>Registrate</span></Link>
                     <Link className='block text-gray-500 text-center my-5 md:my-3 ' to="/reset-password">Olvide mi contraseña</Link>
                 </nav>               
             </div>

@@ -5,8 +5,8 @@ import { use } from "react";
 
 
 // Importacion de custom modules
-import Alerta from '../componentes/Alerta';
-import clienteAxios from "../config/axios";
+import Alerta from '../../componentes/Alerta';
+import clienteAxios from "../../config/axios";
 
 
 

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 
 // Importacion de custom modules
-import Alerta from '../componentes/Alerta';
-import clienteAxios from "../config/axios";
+import Alerta from '../../componentes/Alerta'
+import clienteAxios from "../../config/axios";
 
 
 
@@ -59,7 +59,7 @@ const Registrar = () => {
             // Envia la petición al backend con axios
             await clienteAxios.post(url, {username, email, password });
             setAlerta({
-                msg: 'Usuario creado correctamente, hemos enviado un correo de confirmacion a tu email'
+                msg: 'Usuario creado correctamente, hemos enviado un email de confirmacion a tu correo'
             });
         } catch(error) {
             // Crear alerta de error de backend

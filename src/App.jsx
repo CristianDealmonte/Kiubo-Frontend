@@ -2,36 +2,60 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
-
 // Importacion de componentes
-import AuthLayout from './layout/AuthLayout';
-import Login from './pages/Login';
-import Registrar from './pages/Registrar';
-import ResetPassword from './pages/ResetPassword';
-import ConfirmarCuenta from './pages/ConfirmarCuenta';
-import NewPassword from './pages/NewPassword';
+
+// Componentes de rutas publicas
+import AuthLayout from './layout/AuthLayout'; // Layout principal
+import Login from './pages/auth/Login';
+import Registrar from './pages/auth/Registrar';
+import ConfirmarCuenta from './pages/auth/ConfirmarCuenta';
+import ResetPassword from './pages/auth/ResetPassword';
+import NewPassword from './pages/auth/NewPassword';
 
 
+// Componentes de rutas Protegidas por autenticación
+import { AuthProvider } from './context/AuthProvider'; // estado global de autenticación
+import UserLayout from './layout/UserLayout';
+import Messages from './pages/user/Messages';
+import Search from './pages/user/Search';
+import Profile from './pages/user/Profile';
 
 function App() {
 
-
+ 
 
   return (
     <>
 
     {/* Enrutador de la App */}
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AuthLayout/>}> {/* Layout principal */} 
-          <Route index element={<Login/>}/> {/* Componente default */}
-          <Route path='registrar' element={<Registrar/>}/>
-          <Route path='confirm/:token' element={<ConfirmarCuenta/>}/>
-          <Route path='reset-password' element={<ResetPassword/>}/>
-          <Route path='reset-password/:token' element={<NewPassword/>}/>
-        </Route>
+    <BrowserRouter> {/* Creacion de la navegacion de la app */}
+      <AuthProvider> {/* Asigmacion de los estados globales */}
+          <Routes> 
 
-      </Routes>
+            {/* Rutas Publicas */}
+            <Route path="/" element={<AuthLayout/>}> {/* Layout principal */} 
+              <Route index element={<Login/>}/> {/* Componente default */}
+              <Route path='register' element={<Registrar/>}/>
+              <Route path='confirm/:token' element={<ConfirmarCuenta/>}/>
+              <Route path='reset-password' element={<ResetPassword/>}/>
+              <Route path='reset-password/:token' element={<NewPassword/>}/>
+            </Route>
+
+            {/* Rutas Protegidas por autenticación */}
+            <Route>
+              <Route path="/user" element={<UserLayout/>}>
+                <Route index element={<Messages/>}></Route>
+                <Route path='search' element={<Search/>}></Route>
+                <Route path='profile' element={<Profile/>}></Route>
+                {/* <Route path='search' element={<Search/>}></Route> */}
+              </Route>
+
+            </Route>
+
+
+            
+          </Routes>
+        </AuthProvider>
     </BrowserRouter>
       
 

@@ -4,8 +4,8 @@ import { useParams, Link } from "react-router-dom";
 
 
 // Importacion de custom modules
-import clienteAxios from "../config/axios";
-import Alerta from "../componentes/Alerta";
+import clienteAxios from "../../config/axios";
+import Alerta from "../../componentes/Alerta";
 
 
 const ConfirmarCuenta = () => {
