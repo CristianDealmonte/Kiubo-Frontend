@@ -20,6 +20,16 @@ import Messages from './pages/user/Messages';
 import Search from './pages/user/Search';
 import Profile from './pages/user/Profile';
 
+
+//Componentes de rutas de pantallas de Front
+import Configuracion from './pages/Configuracion';
+import StaticChatList from './pages/StaticChatList';
+import Contactos from './pages/Contactos';
+import Solicitudes from './pages/Solicitudes';
+import MisContactos from './pages/MisContactos';
+import Perfil from './pages/Perfil';
+
+
 function App() {
 
  
@@ -51,6 +61,14 @@ function App() {
               </Route>
 
             </Route>
+
+            {/*Rutas Navegacion de Pantallas del Front */}
+            <Route path="/StaticChatlist" element={<StaticChatList />} /> 
+            <Route path="/contactos" element={<Contactos />} />
+            <Route path="/Solicitudes" element={<Solicitudes />}/>
+            <Route path="/MisContactos" element={<MisContactos />}/>
+            <Route path="/Perfil" element={<Perfil />}/>
+            <Route path="/configuracion" element={<Configuracion />} />
 
 
             
