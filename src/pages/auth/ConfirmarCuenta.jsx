@@ -26,7 +26,7 @@ const ConfirmarCuenta = () => {
         const confirmarCuenta = async () => {
             try {
                 // Contruye la URL a la que se hara la request
-                const URL = `/users/confirm/${token}`;
+                const URL = `/auth/confirm/${token}`;
 
                 // Realizar peticion a backend
                 const { data } = await clienteAxios.get(URL);

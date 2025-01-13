@@ -37,7 +37,7 @@ const AuthProvider = ({children}) => {
 
             try {
                 // realiza la peticion a backend
-                const { data } = await clienteAxios.get('/users/perfil', config);
+                const { data } = await clienteAxios.get('/auth/perfil', config);
 
                 // agregaar al estado global el JWT
                 setAuth(data);

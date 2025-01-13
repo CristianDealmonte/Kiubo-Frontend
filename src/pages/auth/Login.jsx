@@ -38,13 +38,13 @@ const Login = () => {
         //
         try {
             // Realiza peticion a backend
-            const { data } = await clienteAxios.post('/users/login', {email, password});
+            const { data } = await clienteAxios.post('/auth/login', {email, password});
 
             // Almacena en localStorage el JWT que nos retorna
             localStorage.setItem('authToken', data.token);
 
             // Redirige al usuario
-            navigate('/user')
+            navigate('/user/inbox')
 
         } catch (error) {
             // Crea alerta de error

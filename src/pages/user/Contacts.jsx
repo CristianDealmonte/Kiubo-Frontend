@@ -6,7 +6,7 @@
 import useAuth from "../../hooks/useAuth";
 
 
-const Profile = () => {
+const  Contacts = () => {
     
     const { auth } = useAuth;
 
@@ -23,9 +23,10 @@ const Profile = () => {
             <main className="w-9/12 flex flex-col">
                 
 
-            </main>
+            </main>        
         </>
+
     )
 }
 
-export default Profile;
+export default Contacts;

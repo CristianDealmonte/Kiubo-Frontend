@@ -1,7 +1,6 @@
 // Importacion de dependencias
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { use } from "react";
 
 
 // Importacion de custom modules
@@ -27,7 +26,7 @@ const NewPassword = () => {
         const comprobarToken = async () => {
             try {
                 // realiza peticion a backend
-                await clienteAxios(`/users/reset-password/${token}`);
+                await clienteAxios(`/auth/reset-password/${token}`);
 
                 setAlerta({
                     msg: 'Crea una nueva contraseña'
@@ -60,7 +59,7 @@ const NewPassword = () => {
 
         try {
             // Construir URL para la peticion a backend
-            const URL = `/users/reset-password/${token}`;
+            const URL = `/auth/reset-password/${token}`;
 
             // Realizar peticion a backend
             const { data } = await clienteAxios.post(URL, {password});

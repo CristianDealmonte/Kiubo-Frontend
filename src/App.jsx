@@ -17,17 +17,9 @@ import NewPassword from './pages/auth/NewPassword';
 import { AuthProvider } from './context/AuthProvider'; // estado global de autenticación
 import UserLayout from './layout/UserLayout';
 import Messages from './pages/user/Messages';
-import Search from './pages/user/Search';
+import Contacts from './pages/user/Contacts';
 import Profile from './pages/user/Profile';
 
-
-//Componentes de rutas de pantallas de Front
-import Configuracion from './pages/Configuracion';
-import StaticChatList from './pages/StaticChatList';
-import Contactos from './pages/Contactos';
-import Solicitudes from './pages/Solicitudes';
-import MisContactos from './pages/MisContactos';
-import Perfil from './pages/Perfil';
 
 
 function App() {
@@ -54,23 +46,13 @@ function App() {
             {/* Rutas Protegidas por autenticación */}
             <Route>
               <Route path="/user" element={<UserLayout/>}>
-                <Route index element={<Messages/>}></Route>
-                <Route path='search' element={<Search/>}></Route>
-                <Route path='profile' element={<Profile/>}></Route>
+                <Route index element={<Profile/>}></Route>
+                <Route path='inbox' element={<Messages/>}></Route>
+                <Route path='contacts' element={<Contacts/>}></Route>
                 {/* <Route path='search' element={<Search/>}></Route> */}
               </Route>
 
             </Route>
-
-            {/*Rutas Navegacion de Pantallas del Front */}
-            <Route path="/StaticChatlist" element={<StaticChatList />} /> 
-            <Route path="/contactos" element={<Contactos />} />
-            <Route path="/Solicitudes" element={<Solicitudes />}/>
-            <Route path="/MisContactos" element={<MisContactos />}/>
-            <Route path="/Perfil" element={<Perfil />}/>
-            <Route path="/configuracion" element={<Configuracion />} />
-
-
             
           </Routes>
         </AuthProvider>

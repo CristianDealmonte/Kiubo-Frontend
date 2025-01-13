@@ -54,7 +54,7 @@ const Registrar = () => {
         setAlerta({});
 
         try {
-            const url = '/users';
+            const url = '/auth';
 
             // Envia la petición al backend con axios
             await clienteAxios.post(url, {username, email, password });
