@@ -26,10 +26,7 @@ export const  SocketProvider = ({ children }) => {
             socket.on("getOnlineUsers", (users) => {
                 setOnLineUsers(users); 
             })
-
-
-
-
+            
             return () => socket.close();
         } else {
             if(socket) {
