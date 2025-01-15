@@ -17,6 +17,7 @@ import NewPassword from './pages/auth/NewPassword';
 import { AuthProvider } from './context/AuthProvider'; // estado global de autenticación
 import { MensajesProvider } from './context/MensajesProvider'; // estado global de los mensajes
 import { UsuariosProvider } from './context/UsuariosProvider'; // estado global de los usuarios
+import { SocketProvider } from './context/socketProvider';
 
 import UserLayout from './layout/UserLayout';
 import Messages from './pages/user/Messages';
@@ -38,30 +39,32 @@ function App() {
       <AuthProvider> {/* Asigmacion de los estados globales */}
         <MensajesProvider>
           <UsuariosProvider>
-
-            <Routes> 
-              {/* Rutas Publicas */}
-              <Route path="/" element={<AuthLayout/>}> {/* Layout principal */} 
-                <Route index element={<Login/>}/> {/* Componente default */}
-                <Route path='register' element={<Registrar/>}/>
-                <Route path='confirm/:token' element={<ConfirmarCuenta/>}/>
-                <Route path='reset-password' element={<ResetPassword/>}/>
-                <Route path='reset-password/:token' element={<NewPassword/>}/>
-              </Route>
-
-              {/* Rutas Protegidas por autenticación */}
-              <Route>
-                <Route path="/user" element={<UserLayout/>}>
-                  <Route index element={<Profile/>}></Route>
-                  <Route path='inbox/' element={<Messages/>}></Route>
-                  <Route path='inbox/:id' element={<Messages/>}></Route>
-                  <Route path='contacts' element={<Contacts/>}></Route>
-                  {/* <Route path='search' element={<Search/>}></Route> */}
-                </Route>
-              </Route>
+            <SocketProvider>
               
-            </Routes>
+              <Routes> 
+                {/* Rutas Publicas */}
+                <Route path="/" element={<AuthLayout/>}> {/* Layout principal */} 
+                  <Route index element={<Login/>}/> {/* Componente default */}
+                  <Route path='register' element={<Registrar/>}/>
+                  <Route path='confirm/:token' element={<ConfirmarCuenta/>}/>
+                  <Route path='reset-password' element={<ResetPassword/>}/>
+                  <Route path='reset-password/:token' element={<NewPassword/>}/>
+                </Route>
 
+                {/* Rutas Protegidas por autenticación */}
+                <Route>
+                  <Route path="/user" element={<UserLayout/>}>
+                    <Route index element={<Profile/>}></Route>
+                    <Route path='inbox/' element={<Messages/>}></Route>
+                    <Route path='inbox/:id' element={<Messages/>}></Route>
+                    <Route path='contacts' element={<Contacts/>}></Route>
+                    {/* <Route path='search' element={<Search/>}></Route> */}
+                  </Route>
+                </Route>
+                
+              </Routes>
+
+            </SocketProvider>
           </UsuariosProvider>
         </MensajesProvider>
       </AuthProvider>

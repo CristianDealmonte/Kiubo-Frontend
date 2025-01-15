@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 // Importaciones de estado global
 import useMensajes from "../hooks/useMensajes";
 import useUsuarios from '../hooks/useUsuarios';
+import useListenMessages from "../hooks/useListenMessages";
 
 
 // Importaciones de componentes
@@ -16,6 +17,8 @@ const ListadoMensajes = () => {
     // extraccion de funciones de estado global
     const { mensajes, obtenerMensajes } = useMensajes();
     const { chatActivo, cargando } = useUsuarios();
+
+    useListenMessages();
 
     // extraccion del id del usuario receptor del chat de la URL
     const params = useParams();

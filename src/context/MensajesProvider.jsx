@@ -56,10 +56,12 @@ export const MensajesProvider = ({children}) => {
             }
         }
 
+        console.log(receptor)
+
         try {
             // Peticion al servidor
             const { data } = await clienteAxios.post(`/message/send/${receptor}`, mensaje, config);
-            
+
             // Elimina datos inecesarios de la respuesta del servidor
             const { createdAt, updatedAt, __v, ...mensajeAlmacenado } = data;
 
@@ -75,6 +77,7 @@ export const MensajesProvider = ({children}) => {
         <MensajesContext.Provider
             value={{
                 mensajes,
+                setMensajes,
                 obtenerMensajes,
                 guardarMensaje,
             }}
