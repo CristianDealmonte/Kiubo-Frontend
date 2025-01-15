@@ -21,7 +21,6 @@ import { SocketProvider } from './context/socketProvider';
 
 import UserLayout from './layout/UserLayout';
 import Messages from './pages/user/Messages';
-import Contacts from './pages/user/Contacts';
 import Profile from './pages/user/Profile';
 
 
@@ -57,8 +56,7 @@ function App() {
                     <Route index element={<Profile/>}></Route>
                     <Route path='inbox/' element={<Messages/>}></Route>
                     <Route path='inbox/:id' element={<Messages/>}></Route>
-                    <Route path='contacts' element={<Contacts/>}></Route>
-                    {/* <Route path='search' element={<Search/>}></Route> */}
+                    <Route path='profile' element={<Profile/>}></Route>
                   </Route>
                 </Route>
                 

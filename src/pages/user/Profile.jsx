@@ -8,21 +8,21 @@ import useAuth from "../../hooks/useAuth";
 
 const Profile = () => {
     
-    const { auth } = useAuth;
-
-    
-
+    const { auth, cargando, cerrarSesion } = useAuth();
 
 
     return(
         <>
-            <aside className="bg-color2  p-3 lg:w-3/12 lg:min-w-80 lg:border-r lg:border-color3">
 
-            </aside>
 
-            <main className="w-9/12 flex flex-col">
-                
-
+            <main className="w-9/12 flex flex-col text-white">
+            <button
+                        type="button"
+                        onClick={cerrarSesion}
+                    >
+                        <i className='bx bx-log-out-circle text-color3 text-3xl' ></i>
+                    </button>
+                        <h2>Este es el perfil</h2>
             </main>
         </>
     )

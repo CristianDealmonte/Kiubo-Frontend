@@ -29,17 +29,6 @@ const UserLayout = () => {
                         </svg> 
                     </Link>
 
-                    <Link to={'contacts'} >
-                        <svg className={` ${contactsActive ? '' : ''} rounded-lg h-8 w-8 p-1 md:h-10 md:w-10 lg:p-1`}  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="transparent" stroke="#535C91" strokeLinecap="round" strokeLinejoin="round" width="24" height="24" strokeWidth="2">
-                            <path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"></path>
-                            <path d="M10 16h6"></path>
-                            <path d="M13 11m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                            <path d="M4 8h3"></path>
-                            <path d="M4 12h3"></path>
-                            <path d="M4 16h3"></path>
-                        </svg>
-                    </Link>
-
                     <Link to={'/user'} >
                         <svg className={` ${profileActive ? '' : ''} rounded-lg h-8 w-8 p-1 md:h-10 md:w-10 lg:p-1`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="24" height="24" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" stroke="#535C91">
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
@@ -53,8 +42,6 @@ const UserLayout = () => {
                     >
                         <i className='bx bx-log-out-circle text-color3 text-3xl' ></i>
                     </button>
-
-
                 </nav>
                 
                 <div className="flex-1 flex flex-col lg:flex-row lg:w-full overflow-auto">

@@ -73,7 +73,7 @@ const Messages = () => {
 
             <main className="flex-1 flex flex-col lg:w-9/12 overflow-auto">
 
-                { chatActivo ? (
+                { chatActivo?._id ? (
                     <>
                         {/* Info de chat */}
                         <div className="flex items-center gap-3 border-b border-color3 px-5 py-3">
