@@ -14,12 +14,12 @@ const UserLayout = () => {
     const [profileActive, setProfileActive] = useState(true);
     
     // Instanciacion de la autenticacion
-    const { auth, cargando } = useAuth();
+    const { auth, cargando, cerrarSesion } = useAuth();
     
     if(cargando) return 'cargando...'
 
 
-    return(
+    return( 
         <>
             <div className="flex flex-col-reverse h-screen lg:flex-row">
                 <nav className=" flex justify-evenly p-3 border-t-2 border-color4 lg:flex-col lg:justify-start lg:gap-5 lg:border-r-2 lg:border-t-0">
@@ -46,6 +46,13 @@ const UserLayout = () => {
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                         </svg>
                     </Link>
+
+                    <button
+                        type="button"
+                        onClick={cerrarSesion}
+                    >
+                        <i className='bx bx-log-out-circle text-color3 text-3xl' ></i>
+                    </button>
 
 
                 </nav>

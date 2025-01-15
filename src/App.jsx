@@ -15,6 +15,9 @@ import NewPassword from './pages/auth/NewPassword';
 
 // Componentes de rutas Protegidas por autenticación
 import { AuthProvider } from './context/AuthProvider'; // estado global de autenticación
+import { MensajesProvider } from './context/MensajesProvider'; // estado global de los mensajes
+import { UsuariosProvider } from './context/UsuariosProvider'; // estado global de los usuarios
+
 import UserLayout from './layout/UserLayout';
 import Messages from './pages/user/Messages';
 import Contacts from './pages/user/Contacts';
@@ -31,31 +34,38 @@ function App() {
 
     {/* Enrutador de la App */}
     <BrowserRouter> {/* Creacion de la navegacion de la app */}
+      
       <AuthProvider> {/* Asigmacion de los estados globales */}
-          <Routes> 
+        <MensajesProvider>
+          <UsuariosProvider>
 
-            {/* Rutas Publicas */}
-            <Route path="/" element={<AuthLayout/>}> {/* Layout principal */} 
-              <Route index element={<Login/>}/> {/* Componente default */}
-              <Route path='register' element={<Registrar/>}/>
-              <Route path='confirm/:token' element={<ConfirmarCuenta/>}/>
-              <Route path='reset-password' element={<ResetPassword/>}/>
-              <Route path='reset-password/:token' element={<NewPassword/>}/>
-            </Route>
-
-            {/* Rutas Protegidas por autenticación */}
-            <Route>
-              <Route path="/user" element={<UserLayout/>}>
-                <Route index element={<Profile/>}></Route>
-                <Route path='inbox' element={<Messages/>}></Route>
-                <Route path='contacts' element={<Contacts/>}></Route>
-                {/* <Route path='search' element={<Search/>}></Route> */}
+            <Routes> 
+              {/* Rutas Publicas */}
+              <Route path="/" element={<AuthLayout/>}> {/* Layout principal */} 
+                <Route index element={<Login/>}/> {/* Componente default */}
+                <Route path='register' element={<Registrar/>}/>
+                <Route path='confirm/:token' element={<ConfirmarCuenta/>}/>
+                <Route path='reset-password' element={<ResetPassword/>}/>
+                <Route path='reset-password/:token' element={<NewPassword/>}/>
               </Route>
 
-            </Route>
-            
-          </Routes>
-        </AuthProvider>
+              {/* Rutas Protegidas por autenticación */}
+              <Route>
+                <Route path="/user" element={<UserLayout/>}>
+                  <Route index element={<Profile/>}></Route>
+                  <Route path='inbox/' element={<Messages/>}></Route>
+                  <Route path='inbox/:id' element={<Messages/>}></Route>
+                  <Route path='contacts' element={<Contacts/>}></Route>
+                  {/* <Route path='search' element={<Search/>}></Route> */}
+                </Route>
+              </Route>
+              
+            </Routes>
+
+          </UsuariosProvider>
+        </MensajesProvider>
+      </AuthProvider>
+
     </BrowserRouter>
       
 

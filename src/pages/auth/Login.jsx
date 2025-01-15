@@ -6,6 +6,7 @@ import { useState } from "react";
 // Importacion de custom modules
 import Alerta from '../../componentes/Alerta';
 import clienteAxios from "../../config/axios";
+import useAuth from "../../hooks/useAuth";
 
 
 
@@ -17,6 +18,9 @@ const Login = () => {
 
     // Declaracion del estado de la alerta
     const [alerta, setAlerta] = useState({});
+
+    // Para setear el estado global de la autenticacion
+    const { setAuth } = useAuth();
 
     // instancia de redireccion
     const navigate = useNavigate();
@@ -42,6 +46,8 @@ const Login = () => {
 
             // Almacena en localStorage el JWT que nos retorna
             localStorage.setItem('authToken', data.token);
+
+            setAuth(data);
 
             // Redirige al usuario
             navigate('/user/inbox')
