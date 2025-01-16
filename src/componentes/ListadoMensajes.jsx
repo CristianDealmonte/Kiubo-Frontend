@@ -1,5 +1,5 @@
 // Importaciones de dependencias 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 
@@ -31,6 +31,13 @@ const ListadoMensajes = () => {
 
     if(cargando) return 'cargando...'
 
+    const scrollRef = useRef(null);
+
+    useEffect(() => {
+        // Mover el scroll al final cada vez que cambien los mensajes
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, [mensajes]);
+
     return (
         <>
             {/* muestra el contenido condicionalmente si existen o no mensajes con este usuario */}
@@ -42,6 +49,7 @@ const ListadoMensajes = () => {
                             mensaje={mensaje}
                         />
                     ))}
+                    <div ref={scrollRef} /> {/* Elemento vacío para scroll */}
                 </>
             ) : (
                 <>
