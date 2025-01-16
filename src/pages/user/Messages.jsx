@@ -1,6 +1,6 @@
 // Importacion de dependencias
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 // Importacion de custom modules
@@ -10,6 +10,7 @@ import useAuth from "../../hooks/useAuth";
 
 
 // Importacion de componentes
+import Alerta from '../../componentes/Alerta';
 import ChatInfo from "../../componentes/ChatInfo";
 import ListadoMensajes from "../../componentes/ListadoMensajes";
 import ChatControls from '../../componentes/ChatControls';
@@ -17,21 +18,50 @@ import ListadoChats from "../../componentes/ListadoChats";
 import NoChatSelected from "../../componentes/NoChatSelected";
 
 
-
 const Messages = () => {
-
     const { auth } = useAuth();
-    const { chatActivo, openChat } = useUsuarios();
-
-
     const { id } = useParams();
+    const { chatActivo, openChat, usuarios, setChatActivo } = useUsuarios();
 
+    const [ busqueda, setBusqueda ] = useState('');
+    const [ alerta, setAlerta ] = useState({});
 
+    // instancia de redireccion
+    const navigate = useNavigate();
 
     // habilitar scroll
     const scrollBarr = 'overflow-y-scroll [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full &::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-transparent dark:[&::-webkit-scrollbar-thumb]:bg-color3';
  
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if(!busqueda) return;
+
+        const chat = usuarios.find((c) => c.username.toLowerCase().includes(busqueda.toLowerCase()))
+
+
+        if(chat) {
+            setChatActivo(chat);
+
+            console.log(chatActivo)
+
+            // Redirige al usuario
+            navigate(`/user/inbox/${chat._id}`)
+
+            setBusqueda('');
+            setAlerta({});
+        } else {
+            // Crea alerta de error
+            setAlerta({
+                msg: 'No se encontro el usuario',
+                error: true
+            });
+        }
+
+    }
+
+    const { msg } = alerta;
 
 
     return(
@@ -44,18 +74,33 @@ const Messages = () => {
 
                     <h1 className="text-2xl text-white font-bold">Kiubo | {auth.username}</h1>
 
-                    <form >
+                    <form 
+                        onSubmit={handleSubmit}
+                    >
                         <div className="flex border border-color4  rounded-full">
                             <input 
                                 type="text"
                                 placeholder="Busca un chat"
                                 className="flex-1 bg-transparent text-white py-2 px-5 focus:outline-none"
+                                value={busqueda}
+                                onChange={(e) => {
+                                    setBusqueda(e.target.value);
+                                }}
                             />
                             <button type="submit">
                                 <i className='bx bx-search-alt text-white text-xl px-3'></i>
                             </button>
                         </div>
                     </form>
+
+                    { msg &&
+                        <div className="lg:pt-10">
+                            <Alerta
+                                alerta={alerta}
+                            ></Alerta>
+                        </div>
+                    }
+
                 </div>
                 
                 
