@@ -17,10 +17,14 @@ import ListadoChats from "../../componentes/ListadoChats";
 import NoChatSelected from "../../componentes/NoChatSelected";
 
 
+
 const Messages = () => {
 
     const { auth } = useAuth();
     const { chatActivo, openChat } = useUsuarios();
+
+
+    const { id } = useParams();
 
 
 
@@ -61,9 +65,9 @@ const Messages = () => {
                 </ul>
             </aside>
 
-            <main className={`${openChat ? 'block' : 'hidden'} lg:flex flex-1 flex flex-col lg:w-9/12 overflow-auto`}>
+            <main className={`${openChat? 'block' : 'hidden'} lg:flex flex-1 flex flex-col lg:w-9/12 overflow-auto`}>
 
-                { chatActivo?._id ? (
+                { chatActivo?._id  && id  ? (
                     <>
                         {/* Info de chat */}
                         <div className="flex items-center gap-3 border-b border-color3 px-5 py-3">

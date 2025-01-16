@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import useUsuarios from '../hooks/useUsuarios';
 
 
@@ -10,12 +11,15 @@ const ListadoChats = (  ) => {
 
     return (
         <>
-            {usuarios.map( usuario => (
-                <ChatUsuario
-                    key={usuario._id}
-                    usuario={usuario}
-                />
-            ))}
+            {
+                usuarios.map( usuario => (
+                    <ChatUsuario
+                        key={usuario._id}
+                        usuario={usuario}
+                    />
+                ))
+                
+            }
 
         </>
     )
