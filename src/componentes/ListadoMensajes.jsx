@@ -36,15 +36,12 @@ const ListadoMensajes = () => {
             {/* muestra el contenido condicionalmente si existen o no mensajes con este usuario */}
             { mensajes.length ? (
                 <>
-                    {mensajes.map( mensaje => {
-                        console.log(mensaje);
-
-                         return (
+                    {mensajes.map( mensaje => (
                         <Mensaje
                             key={mensaje._id}
                             mensaje={mensaje}
                         />
-                    )})}
+                    ))}
                 </>
             ) : (
                 <>

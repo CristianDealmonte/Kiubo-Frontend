@@ -14,12 +14,13 @@ import ChatInfo from "../../componentes/ChatInfo";
 import ListadoMensajes from "../../componentes/ListadoMensajes";
 import ChatControls from '../../componentes/ChatControls';
 import ListadoChats from "../../componentes/ListadoChats";
+import NoChatSelected from "../../componentes/NoChatSelected";
 
 
 const Messages = () => {
 
     const { auth } = useAuth();
-    const { chatActivo, openChat, setOpenchat } = useUsuarios();
+    const { chatActivo, openChat } = useUsuarios();
 
 
 
@@ -83,7 +84,11 @@ const Messages = () => {
                         </div>
                     </>
                 ) : (
-                    <h2></h2>
+                    <div className="h-full flex items-center">
+
+                        <NoChatSelected/>
+
+                    </div>
                 )}
 
                 

@@ -15,7 +15,7 @@ const UserLayout = () => {
     const [profileActive, setProfileActive] = useState(true);
     
     // Instanciacion de la autenticacion
-    const { auth, cargando, cerrarSesion } = useAuth();
+    const { auth, cargando } = useAuth();
     const { openChat } = useUsuarios();
     
     if(cargando) return 'cargando...'
@@ -37,13 +37,6 @@ const UserLayout = () => {
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                         </svg>
                     </Link>
-
-                    <button
-                        type="button"
-                        onClick={cerrarSesion}
-                    >
-                        <i className='bx bx-log-out-circle text-color3 text-3xl' ></i>
-                    </button>
                 </nav>
                 
                 <div className="flex-1 flex flex-col lg:flex-row lg:w-full overflow-auto">

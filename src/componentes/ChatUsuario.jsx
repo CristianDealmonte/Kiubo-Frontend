@@ -14,7 +14,6 @@ const ChatUsuario = ( {usuario} ) => {
     
     const { onLineUsers } = useSocket();
     const isOnline = onLineUsers.includes(usuario._id);
-
     
     return (
         <Link
@@ -33,7 +32,7 @@ const ChatUsuario = ( {usuario} ) => {
                     className="flex-1 flex gap-5 items-center">
                     <div className="relative">
                         <div className={`${isOnline ? 'bg-green-600' : 'bg-red-600'} rounded-full w-3 h-3 absolute top-0 right-0 border border-color2`}></div>
-                        <img className="w-10 h-10 rounded-full bg-color4" src={usuario.profileImg} alt="Imagen de Perfil" />
+                        <img className="w-10 h-10 rounded-full bg-color4" src={`${import.meta.env.VITE_BACKEND_URL}/public/${usuario.profilePicture}`}  alt="Imagen de Perfil" />
                     </div>
                     <div>
                         <h2 className="text-white font-bold text-lg ">{usuario.username}</h2>
