@@ -15,10 +15,13 @@ const useListenMessages = () => {
     useEffect( () => {
 
         socket?.on('newMessage', (newMessage) => {
+
             if(newMessage.emisor == emisor) {
                 setMensajes([...mensajes, newMessage]);
             }
+            
         });
+
 
         return () => socket?.off('newMessage');
     }, [socket, setMensajes, mensajes]);

@@ -15,14 +15,23 @@ const Profile = () => {
         <>
 
 
-            <main className="w-9/12 flex flex-col text-white">
-            <button
+            <main className="container w-3/5 text-white mx-auto p-3">
+
+            <div className=" bg-color4 h-52">
+                 <h2>Este es el perfil</h2>
+            </div>
+
+            
+            {/* <button
                         type="button"
                         onClick={cerrarSesion}
                     >
                         <i className='bx bx-log-out-circle text-color3 text-3xl' ></i>
-                    </button>
-                        <h2>Este es el perfil</h2>
+                    </button> */}
+
+
+
+                       
             </main>
         </>
     )

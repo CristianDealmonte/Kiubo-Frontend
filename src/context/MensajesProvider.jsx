@@ -56,14 +56,12 @@ export const MensajesProvider = ({children}) => {
             }
         }
 
-        console.log(receptor)
-
         try {
             // Peticion al servidor
             const { data } = await clienteAxios.post(`/message/send/${receptor}`, mensaje, config);
 
             // Elimina datos inecesarios de la respuesta del servidor
-            const { createdAt, updatedAt, __v, ...mensajeAlmacenado } = data;
+            const { __v, ...mensajeAlmacenado } = data;
 
             // Añade al estado global el nuevo mensaje
             setMensajes([...mensajes, mensajeAlmacenado]);

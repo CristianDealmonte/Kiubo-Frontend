@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 // Importacion de custom modules
 import useMensajes from "../../context/MensajesProvider";
 import useUsuarios from '../../hooks/useUsuarios';
+import useAuth from "../../hooks/useAuth";
 
 
 // Importacion de componentes
@@ -17,38 +18,26 @@ import ListadoChats from "../../componentes/ListadoChats";
 
 const Messages = () => {
 
-    const [openChat, setOpenChat] = useState(true);
+    const { auth } = useAuth();
+    const { chatActivo, openChat, setOpenchat } = useUsuarios();
 
-    const { chatActivo } = useUsuarios();
 
-
-    
-
-    const cerrarChat = () => {
-        console.log('cerrando chat');
-        setOpenChat(false);
-    }
-    const abrirChat = () => {
-        console.log('abriendo chat');
-        setOpenChat(true);
-    }
 
     // habilitar scroll
     const scrollBarr = 'overflow-y-scroll [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full &::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-transparent dark:[&::-webkit-scrollbar-thumb]:bg-color3';
-
+ 
 
 
 
     return(
         <>
             <aside 
-                className={`${scrollBarr} ${openChat ? 'hidden' : 'block'} lg:block bg-color2  p-2 lg:w-3/12 lg:min-w-80 lg:border-r lg:border-color3`}>
+                className={`${scrollBarr} ${openChat ? 'hidden' : 'block'} min-h-full lg:block bg-color2  p-2 lg:w-3/12 lg:min-w-80 lg:border-r lg:border-color3`}>
 
                 {/* Busqueda */}
                 <div className="flex flex-col gap-4 px-2 py-5 border-b border-color3">
 
-                    <h1
-                    className="text-2xl text-white font-bold">Kiubo</h1>
+                    <h1 className="text-2xl text-white font-bold">Kiubo | {auth.username}</h1>
 
                     <form >
                         <div className="flex border border-color4  rounded-full">
@@ -71,7 +60,7 @@ const Messages = () => {
                 </ul>
             </aside>
 
-            <main className="flex-1 flex flex-col lg:w-9/12 overflow-auto">
+            <main className={`${openChat ? 'block' : 'hidden'} lg:flex flex-1 flex flex-col lg:w-9/12 overflow-auto`}>
 
                 { chatActivo?._id ? (
                     <>
@@ -94,7 +83,7 @@ const Messages = () => {
                         </div>
                     </>
                 ) : (
-                    <h2>No hay chat seleccionado</h2>
+                    <h2></h2>
                 )}
 
                 

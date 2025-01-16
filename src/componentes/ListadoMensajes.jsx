@@ -12,7 +12,6 @@ import useListenMessages from "../hooks/useListenMessages";
 // Importaciones de componentes
 import Mensaje from "./Mensaje";
 
-
 const ListadoMensajes = () => {
     // extraccion de funciones de estado global
     const { mensajes, obtenerMensajes } = useMensajes();
@@ -32,18 +31,20 @@ const ListadoMensajes = () => {
 
     if(cargando) return 'cargando...'
 
-
     return (
         <>
             {/* muestra el contenido condicionalmente si existen o no mensajes con este usuario */}
             { mensajes.length ? (
                 <>
-                    {mensajes.map( mensaje => (
+                    {mensajes.map( mensaje => {
+                        console.log(mensaje);
+
+                         return (
                         <Mensaje
                             key={mensaje._id}
                             mensaje={mensaje}
                         />
-                    ))}
+                    )})}
                 </>
             ) : (
                 <>

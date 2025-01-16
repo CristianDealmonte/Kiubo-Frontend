@@ -4,18 +4,25 @@ import useUsuarios from '../hooks/useUsuarios';
 import useSocket from '../hooks/useSocket';
 
 
-const ChatUsuario = ( {usuario} ) => {
+const ChatUsuario = ( {usuario} ) => { 
     // Extraer variables de estado global
-    const { chatActivo, setChatActivo } = useUsuarios();
+    const { chatActivo, setChatActivo, openChat, setOpenChat } = useUsuarios();
 
+
+    // Muestra los uaurios activos en la app
     const isActive = chatActivo?._id === usuario._id;
     
     const { onLineUsers } = useSocket();
     const isOnline = onLineUsers.includes(usuario._id);
+
     
     return (
         <Link
             to={`/user/inbox/${usuario._id}`} 
+            onClick={( )=> {
+                // abre y cierra el chat
+                setOpenChat(!openChat);
+            }}
         >
             <li 
                 className={`${ isActive ? "bg-white/20" : ''} flex items-center m-1 p-4 rounded-md hover:bg-white/10 cursor-pointer`}

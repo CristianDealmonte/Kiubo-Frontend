@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 
 // Importacion de custom modules
 import clienteAxios from "../config/axios";
-import { act } from "react";
 
 const UsuariosContext = createContext();
 
@@ -15,11 +14,10 @@ export const UsuariosProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [usuarios, setUsuarios] = useState([]);
     const [chatActivo, setChatActivo] = useState({});
+    const [openChat, setOpenChat] = useState(false);
 
     localStorage.setItem('activeChat', JSON.stringify(chatActivo));
 
-    const activeChat = localStorage.getItem('activeChat');
-    if(!activeChat) return
 
     useEffect(() => {
         const generarUsuarios = async () => {
@@ -66,6 +64,8 @@ export const UsuariosProvider = ({children}) => {
                 usuarios,
                 chatActivo, 
                 setChatActivo,
+                openChat,
+                setOpenChat
             }}
         >
             {children}
